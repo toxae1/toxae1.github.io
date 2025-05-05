@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keenetic Routers</title>
+    <!-- Мета-теги для PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <meta name="theme-color" content="#14151e">
+    <style>
+        :root {
+            --bg-light: #20202c;
+            --bg-dark: #14151e;
+            --bg-dark-extra: #101018;
+            --bg-medium: #1a1a24;
+            --bg-light-extra: #282a39;
+            --text: #fff;
+            --text-2: #aaaaaa;
+            --border-light: #292b3b;
+            --violet: #9047fe;
+            --violet-dark: #4933c2;
+            --violet-light: #ae81ff;
+            --red-dark: #ad1010;
+            --red-orange: #f85212;
+            --red: #f85149;
+            --lime: #6dd919;
+            --green: #3fb950;
+            --green-dark: #105a18;
+            --green-vibrant: #00f593;
+            --blue: #559eff;
+            --blue-light: #2392cc;
+            --blue-light-extra: #42bdf9;
+            --electric-blue: #007bff;
+            --yellow: #fc0;
+            --yellow-bright: #ffd37a;
+            --grey-dark: #75715e;
+            --pink: #f92672;
+            --green-light: #a9f513ee;
+            --orange: #fd971f;
+            --grey: #cfcfc2;
+            --none: #0000;
+            --black: #000;
+            --font-size-base: 1rem;
+            --font: "Overpass", Arial, Helvetica, sans-serif;
+            --font-mono: Monaco, monospace;
+            --accent: #42bdf9;
+            --shadow-popover: 0px 0px 10px 1px var(--bg-dark-extra);
+        }
+
+        html {
+            color: var(--text);
+            font-family: var(--font);
+            font-size: var(--font-size-base);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.light-theme {
+            --bg-light: #f0f0f0;
+            --bg-dark: #ffffff;
+            --bg-dark-extra: #e0e0e0;
+            --bg-medium: #d0d0d0;
+            --bg-light-extra: #c0c0c0;
+            --text: #000;
+            --text-2: #666666;
+            --border-light: #a0a0a0;
+            --accent: #007bff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .router {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: var(--bg-light);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .router-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text);
+            width: 100px;
+        }
+
+        .services {
+            display: flex;
+            gap: 10px;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.2s;
+        }
+
+        .service-icon:hover {
+            transform: scale(1.1);
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--bg-light-extra);
+            padding: 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-family: var(--font);
+            transition: background-color 0.2s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 20px;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--bg-light-extra);
+        }
+
+        @media (max-width: 700px) {
+            .router {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle">🌙</button>
+    <div class="container">
+        <!-- Роутер AX -->
+        <div class="router">
+            <div class="router-name">AX</div>
+            <div class="services">
+                <a href="http://192.168.0.1" target="_blank">
+                    <img src="ken.png" alt="ken" class="service-icon">
+                </a>
+                <a href="http://192.168.0.1:8080" target="_blank">
+                    <img src="mt.png" alt="mt" class="service-icon">
+                </a>
+                <a href="http://192.168.0.1:90" target="_blank">
+                    <img src="nfqws.png" alt="nfqws" class="service-icon">
+                </a>
+            </div>
+        </div>
+
+        <!-- Роутер GIGA -->
+        <div class="router">
+            <div class="router-name">GIGA</div>
+            <div class="services">
+                <a href="http://192.168.3.1" target="_blank">
+                    <img src="ken.png" alt="ken" class="service-icon">
+                </a>
+                <a href="http://192.168.3.1:8080" target="_blank">
+                    <img src="mt.png" alt="mt" class="service-icon">
+                </a>
+                <a href="http://192.168.3.1:90" target="_blank">
+                    <img src="nfqws.png" alt="nfqws" class="service-icon">
+                </a>
+            </div>
+        </div>
+
+        <!-- Роутер DEB -->
+        <div class="router">
+            <div class="router-name">DEB</div>
+            <div class="services">
+                <a href="http://192.168.2.1" target="_blank">
+                    <img src="ken.png" alt="ken" class="service-icon">
+                </a>
+                <a href="http://192.168.2.1:8080" target="_blank">
+                    <img src="mt.png" alt="mt" class="service-icon">
+                </a>
+                <a href="http://192.168.2.1:90" target="_blank">
+                    <img src="nfqws.png" alt="nfqws" class="service-icon">
+                </a>
+            </div>
+        </div>
+
+        <!-- Роутер 1.1 -->
+        <div class="router">
+            <div class="router-name">1.1</div>
+            <div class="services">
+                <a href="http://192.168.1.1" target="_blank">
+                    <img src="ken.png" alt="ken" class="service-icon">
+                </a>
+                <a href="http://192.168.1.1:8080" target="_blank">
+                    <img src="mt.png" alt="mt" class="service-icon">
+                </a>
+                <a href="http://192.168.1.1:90" target="_blank">
+                    <img src="nfqws.png" alt="nfqws" class="service-icon">
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            if (document.body.classList.contains('light-theme')) {
+                themeToggle.textContent = '🌞';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        });
+    </script>
+</body>
+</html>
